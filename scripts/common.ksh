@@ -54,6 +54,9 @@ export CURRENT_TIMESTAMP_FILE=current-time.txt
 # the list of ids to be deleted
 export DELETE_IDS_FILE=delete-ids.txt
 
+# the documents to be updated
+export UPDATE_DOCS_FILE=update-docs.xml
+
 #
 # end of file
 #

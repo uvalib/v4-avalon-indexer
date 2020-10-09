@@ -21,6 +21,8 @@ log_message "Getting all Avalon record ID's..."
 ${CURL_TOOL} "${SOLR_URL}/select?${SOLR_QUERY}" 2> /dev/null | ${JQ_TOOL} ".response.docs[].id" | tr -d "\"" | sort > ${BASE_DIR}/${STATE_DIRECTORY}/${CURRENT_IDS_FILE}
 exit_if_error $? "Getting ID's from Solr"
 
+# create a list of ids that no longer exist
+comm -23 ${BASE_DIR}/${STATE_DIRECTORY}/${LAST_IDS_FILE} ${BASE_DIR}/${STATE_DIRECTORY}/${CURRENT_IDS_FILE} > ${BASE_DIR}/${STATE_DIRECTORY}/${DELETE_IDS_FILE}
 
 #
 # end of file

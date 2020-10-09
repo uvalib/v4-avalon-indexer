@@ -8,6 +8,9 @@ BASE_DIR=${SCRIPTS_DIR}/..
 # source the configuration
 . ${BASE_DIR}/config/config.env
 
+# source the common stuff
+. ${SCRIPTS_DIR}/common.ksh
+
 # do the setup necessary
 ${SCRIPTS_DIR}/setup.ksh
 
@@ -21,15 +24,15 @@ trap onexit EXIT
 ${SCRIPTS_DIR}/make-delete-ids.ksh
 
 # and upload to staging and production
-${SCRIPTS_DIR}/upload-delete-file.ksh staging
-${SCRIPTS_DIR}/upload-delete-file.ksh production
+${SCRIPTS_DIR}/upload-delete-file.ksh ${BASE_DIR}/${STATE_DIRECTORY}/${DELETE_IDS_FILE} staging
+${SCRIPTS_DIR}/upload-delete-file.ksh ${BASE_DIR}/${STATE_DIRECTORY}/${DELETE_IDS_FILE} production
 
 # get the latest Avalon documents
 ${SCRIPTS_DIR}/make-update-docs.ksh
 
 # and upload to staging and production
-${SCRIPTS_DIR}/upload-update-file.ksh staging
-${SCRIPTS_DIR}/upload-update-file.ksh production
+${SCRIPTS_DIR}/upload-update-file.ksh ${BASE_DIR}/${STATE_DIRECTORY}/${UPDATE_DOCS_FILE} staging
+${SCRIPTS_DIR}/upload-update-file.ksh ${BASE_DIR}/${STATE_DIRECTORY}/${UPDATE_DOCS_FILE} production
 
 # all over
 exit 0
