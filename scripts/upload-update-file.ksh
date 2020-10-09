@@ -27,7 +27,7 @@ fi
 
 LINES=$(wc -l ${SOURCE} | awk '{print $1}')
 if [ "${LINES}" == "0" ]; then
-   echo "Update file is empty, doing nothing"
+   echo "Update file is empty, no upload required"
    exit 0
 fi
 
