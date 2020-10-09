@@ -16,13 +16,17 @@ ensure_tool_available ${JQ_TOOL}
 SOLR_OPTS="wt=json&fl=id&rows=1000000"
 SOLR_QUERY="q=${RECORD_TYPE_FIELD}:${RECORD_TYPE}&${SOLR_OPTS}"
 
-log_message "Getting all Avalon record ID's..."
+# informational
+log_message "Getting all record identifiers..."
 
 ${CURL_TOOL} "${SOLR_URL}/select?${SOLR_QUERY}" 2> /dev/null | ${JQ_TOOL} ".response.docs[].id" | tr -d "\"" | sort > ${BASE_DIR}/${STATE_DIRECTORY}/${CURRENT_IDS_FILE}
-exit_if_error $? "Getting ID's from Solr"
+exit_if_error $? "Getting records from Solr"
 
 # create a list of ids that no longer exist
 comm -23 ${BASE_DIR}/${STATE_DIRECTORY}/${LAST_IDS_FILE} ${BASE_DIR}/${STATE_DIRECTORY}/${CURRENT_IDS_FILE} > ${BASE_DIR}/${STATE_DIRECTORY}/${DELETE_IDS_FILE}
+
+# all over
+exit 0
 
 #
 # end of file
