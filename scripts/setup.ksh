@@ -25,6 +25,12 @@ if [ ! -f ${BASE_DIR}/${STATE_DIRECTORY}/${ITERATION_FILE} ]; then
    echo "0" > ${BASE_DIR}/${STATE_DIRECTORY}/${ITERATION_FILE}
 fi
 
+# create the list of ids if it does not exist
+if [ ! -f ${BASE_DIR}/${STATE_DIRECTORY}/${LAST_IDS_FILE} ]; then
+   log_message "Resetting last ID list"
+   touch ${BASE_DIR}/${STATE_DIRECTORY}/${LAST_IDS_FILE}
+fi
+
 # mark the current time
 date -u +"%Y-%m-%dT%H:%M:%SZ" > ${BASE_DIR}/${STATE_DIRECTORY}/${CURRENT_TIMESTAMP_FILE}
 

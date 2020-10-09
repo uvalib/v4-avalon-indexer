@@ -1,5 +1,5 @@
 #
-# Get a complete list of ID's which we use to determine if items must be deleted
+# Make a list of ID's that need to be deleted
 #
 
 SCRIPTS_DIR=$( (cd -P $(dirname $0) && pwd) )
@@ -20,6 +20,7 @@ log_message "Getting all Avalon record ID's..."
 
 ${CURL_TOOL} "${SOLR_URL}/select?${SOLR_QUERY}" 2> /dev/null | ${JQ_TOOL} ".response.docs[].id" | tr -d "\"" | sort > ${BASE_DIR}/${STATE_DIRECTORY}/${CURRENT_IDS_FILE}
 exit_if_error $? "Getting ID's from Solr"
+
 
 #
 # end of file

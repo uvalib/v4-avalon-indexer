@@ -17,8 +17,22 @@ function onexit {
 }
 trap onexit EXIT
 
-# get the complete list of Avalon ID's; we use this to determine if anything needs to be deleted
-${SCRIPTS_DIR}/get-all-ids.ksh
+# make list of everything to be deleted
+${SCRIPTS_DIR}/make-delete-ids.ksh
+
+# and upload to staging and production
+${SCRIPTS_DIR}/upload-delete-file.ksh staging
+${SCRIPTS_DIR}/upload-delete-file.ksh production
+
+# get the latest Avalon documents
+${SCRIPTS_DIR}/make-update-docs.ksh
+
+# and upload to staging and production
+${SCRIPTS_DIR}/upload-update-file.ksh staging
+${SCRIPTS_DIR}/upload-update-file.ksh production
+
+# all over
+exit 0
 
 #
 # end of file

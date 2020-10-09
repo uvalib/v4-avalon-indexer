@@ -1,5 +1,5 @@
 #
-# Common function definitions
+# Shared definitions
 #
 
 # log a message and exit
@@ -50,6 +50,9 @@ export CURRENT_IDS_FILE=current-ids.txt
 
 # the current time (of this iteration)
 export CURRENT_TIMESTAMP_FILE=current-time.txt
+
+# the list of ids to be deleted
+export DELETE_IDS_FILE=delete-ids.txt
 
 #
 # end of file
