@@ -14,7 +14,7 @@ ensure_tool_available ${CURL_TOOL}
 # get the last timestamp
 LAST_TIMESTAMP=$(cat ${BASE_DIR}/${STATE_DIRECTORY}/${LAST_TIMESTAMP_FILE} | awk '{print $1}')
 
-SOLR_OPTS="wt=xml&rows=1000000"
+SOLR_OPTS="indent=on&wt=xml&rows=1000000"
 SOLR_QUERY="q=${RECORD_TYPE_FIELD}:${RECORD_TYPE}+${RECORD_MODIFIED_FIELD}:\[${LAST_TIMESTAMP}%20TO%20NOW\]&${SOLR_OPTS}"
 
 # informational
