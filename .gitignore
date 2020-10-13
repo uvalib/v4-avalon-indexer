@@ -1,2 +1,7 @@
 .idea
-state
+results
+*.log
+archivesspace-virgo
+avalon-in-virgo-indexer
+/config.properties
+production-last-run.txt
