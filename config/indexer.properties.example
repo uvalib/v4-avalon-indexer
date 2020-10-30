@@ -8,8 +8,8 @@ add-doc-repository:results/index
 
 # Information about the fedora repository that backs the avalon application.
 fedoraBase:http://fedora01.lib.virginia.edu:8080/fcrepo/rest/avalon/
-username:md5wz
-password:UdncpsUH
+username:<Fedora user>
+password:<Fedora password>
 
 # The base URL for the solr core that backs avalon.
 hydra-solr-url:http://avalon.lib.virginia.edu:8983/solr/avalon
